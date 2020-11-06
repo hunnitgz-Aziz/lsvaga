@@ -1,16 +1,22 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import styled from '@emotion/styled'
+import Flyer from '../images/event-flyer.jpeg'
 
 import SEO from '~/components/seo'
-import ProductGrid from '~/components/ProductGrid'
+
+const Wrapper = styled.div``
+const EventFlyer = styled.img`
+  display: block;
+  width: 100%;
+`
 
 const IndexPage = () => (
   <>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Shop powered by Gatsby and Shopify.</p>
-    <ProductGrid />
-    <Link to="/page-2/">Go to page 2</Link>
+    <SEO title="Home" keywords={[`Hanz`, `Gran Santo`, `Lake side vagabond`]} />
+    <Wrapper>
+      <EventFlyer src={Flyer} />
+    </Wrapper>
   </>
 )
 

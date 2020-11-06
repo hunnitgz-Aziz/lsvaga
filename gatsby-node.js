@@ -11,6 +11,22 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
       }
+      allContentfulRaps {
+        edges {
+          node {
+            id
+            title
+          }
+        }
+      }
+      allContentfulVideo {
+        edges {
+          node {
+            id
+            title
+          }
+        }
+      }
     }
   `).then(result => {
     result.data.allShopifyProduct.edges.forEach(({ node }) => {

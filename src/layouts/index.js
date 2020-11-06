@@ -10,8 +10,17 @@ import Navigation from '~/components/Navigation'
 
 const Wrapper = styled.div`
   margin: 0 auto;
-  max-width: 960px;
-  padding: 0px 1.0875rem 1.45rem;
+  max-width: 1200px;
+  padding: 0px 1.0875rem 3.45rem;
+`
+
+const Footer = styled.footer`
+  text-align: center;
+  height: 2rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  font-size: 12px;
 `
 
 const Layout = ({ children }) => {
@@ -31,14 +40,10 @@ const Layout = ({ children }) => {
         render={data => (
           <>
             <Navigation siteTitle={data.site.siteMetadata.title} />
-            <Wrapper>
-              {children}
-              <footer>
-                © {new Date().getFullYear()}, Built with
-                {` `}
-                <a href="https://www.gatsbyjs.org">Gatsby</a>
-              </footer>
-            </Wrapper>
+            <Wrapper>{children}</Wrapper>
+            <Footer>
+              LSVAGA ® (DONT USE MY SHIT NIGGA) {new Date().getFullYear()}
+            </Footer>
           </>
         )}
       />

@@ -1,14 +1,14 @@
 const path = require('path')
 
 require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`
+  path: `.env.${process.env.NODE_ENV}`,
 })
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Shopify Starter`,
-    description: `Kick off your next, ecommerce experience with this Gatsby starter. This starter ships with credentials to a shopify demo store so you can try it out immediately.`,
-    author: `@alexanderhorl`,
+    title: `LSVAGA`,
+    description: `New album, Vagabond, coming soon.`,
+    author: `@AzizRamos`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -66,9 +66,32 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-134421805-1",
+        trackingId: 'UA-134421805-1',
         anonymize: true,
         respectDNT: true,
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `6oc18si0xzig`,
+        accessToken: `mKBSxjkM_50R40ZYd23CanWF52bxovOudw2tsbjIPzU`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images-contentful`,
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 1024,
+            },
+          },
+        ],
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

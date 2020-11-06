@@ -7,6 +7,7 @@ export const breakpoints = {
   s: 576,
   m: 768,
   l: 992,
+  ipad: 1024,
   xl: 1200,
 }
 
@@ -14,8 +15,14 @@ export const GlobalStyle = props => (
   <Global
     {...props}
     styles={css`
+      @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&display=swap');
+
       body {
+        font-family: 'EB Garamond', serif;
+        background-color: #e0e0e0;
+        min-height: 100%;
         margin: 0;
+        position: relative;
       }
       html {
         font-family: sans-serif;
