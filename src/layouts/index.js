@@ -9,21 +9,21 @@ import { GlobalStyle } from '~/utils/styles'
 import Navigation from '~/components/Navigation'
 
 const Wrapper = styled.div`
-  margin: 0 auto;
-  max-width: 1200px;
-  padding: 0px 1.0875rem 3.45rem;
+  padding-bottom: 1rem;
 `
 
 const Footer = styled.footer`
   text-align: center;
   height: 2rem;
   width: 100%;
-  position: absolute;
-  bottom: 0;
   font-size: 12px;
 `
 
 const Layout = ({ children }) => {
+  if (typeof window !== 'undefined') {
+    // eslint-disable-next-line global-require
+    require('smooth-scroll')('a[href*="#"]')
+  }
   return (
     <ContextProvider>
       <GlobalStyle />

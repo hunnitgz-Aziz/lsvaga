@@ -1,8 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import Helmet from 'react-helmet'
 
 import SEO from '~/components/seo'
 import ProductForm from '~/components/ProductForm'
+
 import {
   Img,
   Container,
@@ -12,11 +14,16 @@ import {
 } from '~/utils/styles'
 import { ProductTitle, ProductDescription } from './styles'
 
+import '../../styles/styles.css'
+
 const ProductPage = ({ data }) => {
   const product = data.shopifyProduct
   return (
     <>
       <SEO title={product.title} description={product.description} />
+      <Helmet>
+        <body className="product-page" />
+      </Helmet>
       <Container>
         <TwoColumnGrid>
           <GridLeft>

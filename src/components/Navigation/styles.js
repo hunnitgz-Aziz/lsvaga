@@ -4,8 +4,17 @@ import { Link } from 'gatsby'
 import { breakpoints } from '../../utils/styles'
 
 export const Wrapper = styled.div`
-  background: transparent;
-  margin-bottom: 1.45rem;
+  position: fixed;
+  width: 100%;
+  z-index: 1001;
+
+  &.bg-white {
+    background: #e0e0e0;
+  }
+
+  &.bg-none {
+    background: transparent;
+  }
 `
 
 export const Container = styled.div`
@@ -50,6 +59,14 @@ export const MenuLink = styled(Link)`
   font-size: 2rem;
   font-weight: bold;
 
+  &.white {
+    color: #fff;
+  }
+
+  &.black {
+    color: #222;
+  }
+
   @media (max-width: ${breakpoints.s}px) {
     font-size: 1.4rem;
   }
@@ -58,6 +75,14 @@ export const MenuLink = styled(Link)`
 export const MenuIcon = styled.div`
   color: #990000;
   cursor: pointer;
+
+  &.white {
+    color: #fff;
+  }
+
+  &.black {
+    color: #222;
+  }
 
   @media (min-width: 1025px) {
     display: none;
@@ -77,6 +102,14 @@ export const CartCounter = styled.span`
 
 export const Logo = styled.img`
   max-width: 100px;
+
+  &.white {
+    filter: invert(1);
+  }
+
+  &.black {
+    filter: invert(0);
+  }
 
   @media (max-width: ${breakpoints.s}px) {
     max-width: 70px;

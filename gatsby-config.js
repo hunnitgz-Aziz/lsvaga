@@ -9,6 +9,7 @@ module.exports = {
     title: `LSVAGA`,
     description: `New album, Vagabond, coming soon.`,
     author: `@AzizRamos`,
+    image: 'src/images/social-media-bg.jpg',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

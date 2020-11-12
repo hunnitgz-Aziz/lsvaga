@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from 'react'
+import React, { useContext, useState, useRef, useEffect } from 'react'
 import reduce from 'lodash/reduce'
 import PropTypes from 'prop-types'
 
@@ -35,42 +35,59 @@ const Navigation = ({ siteTitle }) => {
   const node = useRef()
   useOnClickOutside(node, () => setOpen(false))
 
+  const [scroll, setScroll] = useState(false)
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      setScroll(window.scrollY > 50)
+    })
+  }, [])
+
   return (
-    <Wrapper>
+    <Wrapper className={scroll ? 'bg-white' : 'bg-none'}>
       <Container>
-        {/* <MenuBlock>
-          <MenuIcon open={open} onClick={() => setOpen(true)}>
+        <MenuBlock className="menu-block hamburger">
+          <MenuIcon
+            open={open}
+            onClick={() => setOpen(true)}
+            className={scroll ? 'black' : 'white'}
+          >
             &#9776;
           </MenuIcon>
           <Menu>
-            <MenuItem>
-              <MenuLink to="/sale">Sale</MenuLink>
+            <MenuItem className="menu-item">
+              <MenuLink className={scroll ? 'black' : 'white'} to="/#raps">
+                Raps
+              </MenuLink>
             </MenuItem>
-            <MenuItem>
-              <MenuLink to="/raps">Raps</MenuLink>
+            <MenuItem className="menu-item">
+              <MenuLink className={scroll ? 'black' : 'white'} to="/#cinema">
+                Cinema
+              </MenuLink>
             </MenuItem>
-            <MenuItem>
-              <MenuLink to="/library">Library</MenuLink>
+            <MenuItem className="menu-item">
+              <MenuLink className={scroll ? 'black' : 'white'} to="/#library">
+                Library
+              </MenuLink>
             </MenuItem>
-            <MenuItem>
-              <MenuLink to="/cinema">Cinema</MenuLink>
-            </MenuItem>
-            <MenuItem>
-              <MenuLink to="/contact">Contact</MenuLink>
+
+            <MenuItem className="menu-item">
+              <MenuLink className={scroll ? 'black' : 'white'} to="/#sale">
+                Sale
+              </MenuLink>
             </MenuItem>
           </Menu>
-        </MenuBlock>*/}
-        <MenuBlock textAlign="center" style={{ width: '100%' }}>
-          <MenuLink to="/">
-            <Logo src={SiteLogo} />
+        </MenuBlock>
+        <MenuBlock textAlign="center">
+          <MenuLink className="site-logo" to="/">
+            <Logo className={scroll ? 'black' : 'white'} src={SiteLogo} />
           </MenuLink>
         </MenuBlock>
-        {/* <MenuBlock textAlign="right">
+        <MenuBlock textAlign="right">
           <MenuLink to="/cart">
             {hasItems && <CartCounter>{quantity}</CartCounter>}
-            🛍
+            🛒
           </MenuLink>
-        </MenuBlock> */}
+        </MenuBlock>
       </Container>
       <div ref={node}>
         <Sidebar open={open} setOpen={setOpen}>
@@ -79,36 +96,32 @@ const Navigation = ({ siteTitle }) => {
           </CloseButton>
           <Menu>
             <MenuItem>
-              <MenuLink to="/sale" open={open} onClick={() => setOpen(false)}>
-                Sale
-              </MenuLink>
-            </MenuItem>
-            <MenuItem>
-              <MenuLink to="/raps" open={open} onClick={() => setOpen(false)}>
+              <MenuLink to="/#raps" open={open} onClick={() => setOpen(false)}>
                 Raps
               </MenuLink>
             </MenuItem>
             <MenuItem>
               <MenuLink
-                to="/library"
+                to="/#cinema"
+                open={open}
+                onClick={() => setOpen(false)}
+              >
+                Cinema
+              </MenuLink>
+            </MenuItem>
+            <MenuItem>
+              <MenuLink
+                to="/#library"
                 open={open}
                 onClick={() => setOpen(false)}
               >
                 Library
               </MenuLink>
             </MenuItem>
+
             <MenuItem>
-              <MenuLink to="/cinema" open={open} onClick={() => setOpen(false)}>
-                Cinema
-              </MenuLink>
-            </MenuItem>
-            <MenuItem>
-              <MenuLink
-                to="/contact"
-                open={open}
-                onClick={() => setOpen(false)}
-              >
-                Contact
+              <MenuLink to="/#sale" open={open} onClick={() => setOpen(false)}>
+                Sale
               </MenuLink>
             </MenuItem>
           </Menu>

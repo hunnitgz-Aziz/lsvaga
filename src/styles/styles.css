@@ -1,0 +1,33 @@
+.product-page .site-logo img,
+.cart-page .site-logo img {
+  filter: invert(0) !important;
+}
+
+.product-page .menu-item a,
+.product-page .hamburger > div,
+.cart-page .menu-item a,
+.cart-page .hamburger > div {
+  color: #222 !important;
+}
+
+.slick-next:before {
+  color: #222 !important;
+  content: '\21E5' !important;
+}
+
+.slick-prev:before {
+  content: '\21E4' !important;
+  color: #222 !important;
+}
+
+.slick-prev {
+  left: 5px !important;
+}
+
+.slick-next {
+  right: -5px !important;
+}
+
+.slick-dots {
+  bottom: 0;
+}

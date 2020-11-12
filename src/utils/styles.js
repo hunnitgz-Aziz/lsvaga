@@ -47,7 +47,9 @@ export const Img = styled(Image)`
 
 export const Container = styled.div`
   margin: 0 auto;
-  max-width: 960px;
+  max-width: 1200px;
+  padding-top: 10rem;
+  width: 90%;
 `
 
 export const TwoColumnGrid = styled.div`
@@ -67,6 +69,12 @@ export const GridLeft = styled.div`
 
 export const GridRight = styled.div`
   grid-area: right;
+
+  @media (min-width: ${breakpoints.l}px) {
+    position: sticky;
+    top: 11rem;
+    height: 600px;
+  }
 `
 
 export const MainContent = styled.main`

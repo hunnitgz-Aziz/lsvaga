@@ -4,6 +4,14 @@ import isEqual from 'lodash/isEqual'
 import PropTypes from 'prop-types'
 
 import StoreContext from '~/context/StoreContext'
+import {
+  CartButton,
+  SelectMenu,
+  QuantityBlock,
+  OptionsBlock,
+  ControlSection,
+  QuantityInput,
+} from './styles'
 
 const ProductForm = ({ product }) => {
   const {
@@ -98,45 +106,52 @@ const ProductForm = ({ product }) => {
   return (
     <>
       <h3>{price}</h3>
-      {options.map(({ id, name, values }, index) => (
-        <React.Fragment key={id}>
-          <label htmlFor={name}>{name} </label>
-          <select
-            name={name}
-            key={id}
-            onChange={event => handleOptionChange(index, event)}
-          >
-            {values.map(value => (
-              <option
-                value={value}
-                key={`${name}-${value}`}
-                disabled={checkDisabled(name, value)}
+      <ControlSection>
+        {options.map(({ id, name, values }, index) => (
+          <React.Fragment key={id}>
+            <OptionsBlock className="options-block">
+              <label htmlFor={name}>{name} </label>
+              <SelectMenu
+                name={name}
+                key={id}
+                onChange={event => handleOptionChange(index, event)}
               >
-                {value}
-              </option>
-            ))}
-          </select>
-          <br />
-        </React.Fragment>
-      ))}
-      <label htmlFor="quantity">Quantity </label>
-      <input
-        type="number"
-        id="quantity"
-        name="quantity"
-        min="1"
-        step="1"
-        onChange={handleQuantityChange}
-        value={quantity}
-      />
-      <br />
-      <button
+                <option value="" selected disabled hidden>
+                  Select Size
+                </option>
+                {values.map(value => (
+                  <option
+                    value={value}
+                    key={`${name}-${value}`}
+                    disabled={checkDisabled(name, value)}
+                  >
+                    {value}
+                  </option>
+                ))}
+              </SelectMenu>
+            </OptionsBlock>
+          </React.Fragment>
+        ))}
+        <QuantityBlock className="quantity-block">
+          <label htmlFor="quantity">Quantity </label>
+          <QuantityInput
+            type="number"
+            id="quantity"
+            name="quantity"
+            min="1"
+            step="1"
+            onChange={handleQuantityChange}
+            value={quantity}
+          />
+        </QuantityBlock>
+      </ControlSection>
+      <CartButton
         type="submit"
         disabled={!available || adding}
         onClick={handleAddToCart}
       >
         Add to Cart
-      </button>
+      </CartButton>
       {!available && <p>This Product is out of Stock!</p>}
     </>
   )

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Link } from 'gatsby'
 
 import StoreContext from '~/context/StoreContext'
-import { Wrapper } from './styles'
+import { Wrapper, RemoveButton } from './styles'
 
 const LineItem = props => {
   const { item } = props
@@ -41,8 +41,9 @@ const LineItem = props => {
         {item.variant.title === !'Default Title' ? item.variant.title : ''}
       </p>
       {selectedOptions}
+      {` x `}
       {item.quantity}
-      <button onClick={handleRemove}>Remove</button>
+      <RemoveButton onClick={handleRemove}>Remove</RemoveButton>
     </Wrapper>
   )
 }
