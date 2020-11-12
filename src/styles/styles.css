@@ -31,3 +31,8 @@
 .slick-dots {
   bottom: 0;
 }
+
+.slick-next,
+.slick-prev {
+  z-index: 1;
+}
