@@ -1,6 +1,10 @@
 import React, { useContext, useState, useRef, useEffect } from 'react'
 import reduce from 'lodash/reduce'
 import PropTypes from 'prop-types'
+import { faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faReddit } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { useOnClickOutside } from './hooks'
 
@@ -17,6 +21,7 @@ import {
   MenuIcon,
   Sidebar,
   CloseButton,
+  SocialLink,
 } from './styles'
 import SiteLogo from '../../images/site-logo.png'
 
@@ -83,6 +88,27 @@ const Navigation = ({ siteTitle }) => {
           </MenuLink>
         </MenuBlock>
         <MenuBlock textAlign="right">
+          <SocialLink
+            target="_blank"
+            href="https://www.instagram.com/lakesidevagabond/?hl=en"
+            className={scroll ? 'black' : 'white'}
+          >
+            <FontAwesomeIcon icon={faInstagram} />
+          </SocialLink>
+          <SocialLink
+            target="_blank"
+            href="https://twitter.com/LSVAGABOND"
+            className={scroll ? 'black' : 'white'}
+          >
+            <FontAwesomeIcon icon={faTwitter} />
+          </SocialLink>
+          <SocialLink
+            target="_blank"
+            href="https://www.reddit.com/r/hanzsaves/"
+            className={scroll ? 'black' : 'white'}
+          >
+            <FontAwesomeIcon icon={faReddit} />
+          </SocialLink>
           <MenuLink to="/cart">
             {hasItems && <CartCounter>{quantity}</CartCounter>}
             🛒
@@ -118,12 +144,32 @@ const Navigation = ({ siteTitle }) => {
                 Library
               </MenuLink>
             </MenuItem>
-
             <MenuItem>
               <MenuLink to="/#sale" open={open} onClick={() => setOpen(false)}>
                 Sale
               </MenuLink>
             </MenuItem>
+            <SocialLink
+              target="_blank"
+              href="https://www.instagram.com/lakesidevagabond/?hl=en"
+              className="sidemenu-link"
+            >
+              <FontAwesomeIcon icon={faInstagram} />
+            </SocialLink>
+            <SocialLink
+              target="_blank"
+              href="https://twitter.com/LSVAGABOND"
+              className="sidemenu-link"
+            >
+              <FontAwesomeIcon icon={faTwitter} />
+            </SocialLink>
+            <SocialLink
+              target="_blank"
+              href="https://www.reddit.com/r/hanzsaves/"
+              className="sidemenu-link"
+            >
+              <FontAwesomeIcon icon={faReddit} />
+            </SocialLink>
           </Menu>
         </Sidebar>
       </div>

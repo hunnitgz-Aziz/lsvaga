@@ -53,6 +53,26 @@ export const MenuBlock = styled.div(
   props => ({ textAlign: props.textAlign })
 )
 
+export const SocialLink = styled.a`
+  color: white;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-right: 0.5rem;
+
+  &.white {
+    color: #fff;
+  }
+
+  &.black {
+    color: #222;
+  }
+
+  @media (max-width: ${breakpoints.s}px) {
+    display: none;
+  }
+`
+
 export const MenuLink = styled(Link)`
   color: white;
   text-decoration: none;
@@ -131,6 +151,10 @@ export const Sidebar = styled.div`
   transform: translateX(-100%);
   width: 50%;
   z-index: 1001;
+
+  .sidemenu-link {
+    display: inline-block;
+  }
 
   ul {
     display: block;

@@ -235,7 +235,7 @@ const IndexPage = ({ data }) => {
                     Vagabond
                   </p>
                   <Button target="_blank" href="https://gs.fanlink.to/vagabond">
-                    Pre-save now!
+                    Listen now!
                   </Button>
                 </AlbumInfo>
                 <Canvas className="perspective center-xy">
